@@ -1,25 +1,208 @@
-<!DOCTYPE html>
-<html lang="">
+<html>
+	<head>
+		<title>Mental Math</title>
 
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>SEARCHING</title>
-  <style>
-    body {
-      padding: 0;
-      margin: 0;
-      background-color: rgba(17, 7, 23, 0.212);
-    }
-  </style>
-  <script src="p5.js"></script>
-  <!-- <script src="../addons/p5.sound.js"></script> -->
-  <script src="sketch.js"></script>
-</head>
+		<style>
+			body{
+				background-color:rgb(0,0,0);
+				margin-top: 10%;
+				margin-left: 10%;
+				margin-right: 10%;
+				margin-bottom: 10%;
+			}
 
-<body>
-  <main>
-  </main>
-</body>
+			table, th, td {
+				border: 3px solid blanchedalmond;
+				padding:0.5em;
+				border-color: blanchedalmond;
+				
+			}
 
-</html>
+			.Calculator{
+				
+				margin-left: auto;
+				margin-right:auto;
+					
+			}
+
+			.btnMid{
+				color:blanchedalmond;
+				background-color:black;;
+				font-size: 2em;
+				border-radius: 1;
+				border: 5px solid wheat;
+				margin:auto;
+				width:5em;
+				height:2em;
+			}
+
+			#sel{
+				color:blanchedalmond;
+				background-color:black;
+				font-size: 2em;
+				border-radius: 1em;
+				margin-left:auto;
+				width:5em;
+				height:2em;
+				border: 5px solid wheat;
+				text-align: center;
+			}
+
+			#sel2{
+				color:blanchedalmond;
+				background-color:black;
+				font-size: 2em;
+				border-radius: 1em;
+				margin-left:auto;
+				width:5em;
+				height:2em;
+				border: 5px solid wheat;
+				text-align: center;
+			}
+
+			#num1{
+				height:2em;
+				width: 5em;
+				font-size:2em;
+				background-color: black;
+				color:antiquewhite;
+				border:solid 2px  blanchedalmond;
+				padding-left: 5%;
+
+			}
+			#num3{
+				height:2em;
+				width: 5em;
+				font-size:2em;
+				background-color: black;
+				color:antiquewhite;
+				border:solid 2px  blanchedalmond;
+				padding-left: 5%;
+			}
+		</style>
+
+	</head>
+
+	<script type="text/javascript">
+
+		function ranDom(){
+
+			if (document.getElementById("sel2").value=="+"){
+				var z = "+";
+			}
+				else if (document.getElementById("sel2").value=="-"){
+				var z = "-";
+			}
+				else if (document.getElementById("sel2").value=="*"){
+				var z = " x ";
+			}
+				else if (document.getElementById("sel2").value=="/"){
+				var z = "/";
+			}
+				else if (document.getElementById("sel2").value=="Square"){
+				var z = "^2"
+			}
+			else if (document.getElementById("sel2").value=="Cube"){
+				var z = "^3"
+			}
+
+			var x1 = Math.floor(Math.random() * 9)+2;
+			var x2 = Math.floor(Math.random() * 90)+10;
+			var x3 = Math.floor(Math.random() * 900)+100;
+			var y2 = Math.floor(Math.random() * 90)+10;
+			var y3 = Math.floor(Math.random() * 900)+100;
+
+			if (document.getElementById("sel").value == "3 by 3"){	 	 
+				document.getElementById("num1").value = x3 + z + y3
+				document.getElementById("num3").value= null
+			} 
+			else if (document.getElementById("sel").value == "2 by 2"){
+				document.getElementById("num1").value = x2 + z + y2
+				document.getElementById("num3").value= null
+			}
+			else if (document.getElementById("sel").value == "2 by 1"){
+				document.getElementById("num1").value = x2 + z + x1
+				document.getElementById("num3").value= null;
+			}
+			else if (document.getElementById("sel").value == "3 by 1"){
+				document.getElementById("num1").value = x3 + z + x1
+				document.getElementById("num3").value= null;
+			}
+			else if (document.getElementById("sel").value == "3 by 2"){
+				document.getElementById("num1").value = x3 + z + y2
+				document.getElementById("num3").value= null;
+			}
+			else if (document.getElementById("sel").value == "2 Digit"){
+				document.getElementById("num1").value = x2 + z
+				document.getElementById("num3").value= null;
+			}
+			else if (document.getElementById("sel").value == "3 Digit"){
+				document.getElementById("num1").value = x3 + z
+				document.getElementById("num3").value= null;
+			}
+			document.getElementById("btH").value= "Next"
+		}
+
+
+		function solve(){
+			if (document.getElementById("sel2").value=="Square"){
+				var a=document.getElementById("num1").value;
+				var a=parseInt(a)
+				var b= a*a;
+				document.getElementById("num3").value=b;
+			}
+			else if (document.getElementById("sel2").value=="Cube"){
+				var a=document.getElementById("num1").value;
+				var a=parseInt(a)
+				var b= a*a*a;
+				document.getElementById("num3").value=b;
+			}
+
+			else if (document.getElementById("sel2").value !="Square" || document.getElementById("sel2").value !="Cube"){
+				var a = document.getElementById("num1").value;
+				var b = eval(a);
+				document.getElementById("num3").value= b;
+			}
+		
+			
+		}
+
+	</script>
+
+	<body>
+
+		<table class="calculator" cellspacing="5" cellpadding="50">
+
+	   <tr>
+			<td><input id="num1" name="display" value="0" size="8">
+			<td><input id="num3" name="display" value="0" size="8"></td>
+		</tr> 
+
+		<tr>
+			<td><select id="sel">
+				<option value="2 by 1">2 x 1</option>
+				<option value="2 by 2">2 x 2</option>
+				<option value="3 by 1">3 x 1</option>
+				<option value="3 by 2">3 x 2</option>
+				<option value="3 by 3">3 x 3</option>
+				<option value="2 Digit">2 Digit</option>
+				<option value="3 Digit">3 Digit</option>
+			</select></td>
+			<td><select id="sel2">
+				<option value="+">Addition</option>
+				<option value="-">Subtraction</option>
+				<option value="*">Multiplication</option>
+				<option value="/">Division</option>
+				<option value="Square">Square</option>
+				<option value="Cube">Cube</option>
+					</select></td>
+		 </tr>
+
+		 <tr>
+			<td><input type="button" class="btnMid" id="btH" name="btnTop" value="Start" onclick="ranDom()"></td>
+			<td><input type="button" class="btnMId"  name="btnMid" value="Answer" onclick="solve()"></td>
+		
+		</tr> 
+			  </table>
+
+	</body>
