@@ -1,5 +1,5 @@
-# Maze_Game
+# Basic Arithmatic practice tool
 [open in browser](https://glitterb.github.io/Maze_Game/)
 
-This project is attempt to solve the given maze and is still undergoing.
+This is person project, created to practice arithmatic operations mentally
  
